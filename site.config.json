@@ -1,11 +1,11 @@
 {
   "domain": "lee.bot",
-  "managedBy": "parking",
-  "title": "lee.bot",
-  "headline": "lee.bot",
-  "subheadline": "This domain is registered and maintained under our digital portfolio.",
-  "badge": "Parked Domain",
-  "accentColor": "#6366f1",
-  "contactEmail": "inquiries@lee.bot",
-  "ctaText": "Inquire About Domain"
+  "managedBy": "standalone",
+  "title": "lee.bot — Autonomous Intelligence Engine",
+  "headline": "Autonomous Intelligence & Agent Protocol",
+  "subheadline": "Empowering next-generation multi-agent autonomous workflows and high-speed cognitive edge execution.",
+  "badge": "AI Protocol",
+  "accentColor": "#06b6d4",
+  "contactEmail": "mailto@lee.bot",
+  "ctaText": "Explore Intelligence"
 }
