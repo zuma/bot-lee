@@ -9,7 +9,7 @@ import { AgentGrid } from './components/AgentGrid.jsx';
 
 const app = new Hono();
 
-// Main App Route
+// Main App Route (Light Mode Theme)
 app.get('/', (c) => {
   return c.html(
     <html lang="en">
@@ -30,20 +30,17 @@ app.get('/', (c) => {
             }
             body {
               font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-              background-color: #070a12;
-              color: #f8fafc;
+              background-color: #f8fafc;
+              color: #0f172a;
               min-height: 100vh;
               overflow-x: hidden;
               line-height: 1.5;
             }
             
-            /* Cyber Background Mesh */
-            .cyber-bg {
+            /* Light Cyber Background Grid */
+            .cyber-light-bg {
               position: relative;
-              background-image: 
-                radial-gradient(circle at 50% 0%, rgba(6, 182, 212, 0.18) 0%, transparent 60%),
-                radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.12) 0%, transparent 50%),
-                radial-gradient(circle at 15% 70%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+              background: radial-gradient(circle at 50% 0%, #e0f2fe 0%, #f8fafc 50%, #f1f5f9 100%);
             }
             .grid-overlay {
               position: absolute;
@@ -53,8 +50,8 @@ app.get('/', (c) => {
               height: 100%;
               background-size: 40px 40px;
               background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+                linear-gradient(to right, rgba(2, 132, 199, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(2, 132, 199, 0.05) 1px, transparent 1px);
               pointer-events: none;
             }
 
@@ -66,83 +63,88 @@ app.get('/', (c) => {
               letter-spacing: -0.04em;
               line-height: 1.1;
               margin-bottom: 1.5rem;
+              color: #0f172a;
             }
             .hero-gradient {
-              background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 40%, #06b6d4 100%);
+              background: linear-gradient(135deg, #0284c7 0%, #2563eb 50%, #7c3aed 100%);
               -webkit-background-clip: text;
               -webkit-text-fill-color: transparent;
             }
 
-            /* Cards & Glassmorphism */
+            /* Cards & Light Glassmorphism */
             .agent-card {
-              background: rgba(15, 23, 42, 0.65);
-              backdrop-filter: blur(12px);
-              border: 1px solid rgba(255, 255, 255, 0.08);
+              background: #ffffff;
+              border: 1px solid rgba(2, 132, 199, 0.15);
               border-radius: 16px;
               padding: 2rem;
+              box-shadow: 0 10px 30px -10px rgba(2, 132, 199, 0.08);
               transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             }
             .agent-card:hover {
               transform: translateY(-4px);
-              border-color: rgba(6, 182, 212, 0.35);
-              box-shadow: 0 20px 40px -15px rgba(6, 182, 212, 0.2);
+              border-color: rgba(2, 132, 199, 0.4);
+              box-shadow: 0 20px 40px -12px rgba(2, 132, 199, 0.18);
             }
             .agent-tag {
               display: inline-block;
               padding: 0.25rem 0.65rem;
               border-radius: 6px;
-              backgroundColor: rgba(255, 255, 255, 0.05);
-              border: 1px solid rgba(255, 255, 255, 0.1);
-              color: #94a3b8;
+              backgroundColor: #f1f5f9;
+              border: 1px solid #e2e8f0;
+              color: #0369a1;
               font-size: 0.75rem;
               font-family: 'JetBrains Mono', monospace;
+              font-weight: 600;
             }
 
             /* Terminal Buttons */
             .terminal-cmd-btn {
-              background: rgba(255, 255, 255, 0.06);
-              border: 1px solid rgba(255, 255, 255, 0.12);
-              color: #06b6d4;
+              background: #f1f5f9;
+              border: 1px solid #cbd5e1;
+              color: #0284c7;
               font-family: 'JetBrains Mono', monospace;
               font-size: 0.75rem;
               padding: 0.35rem 0.75rem;
               border-radius: 6px;
               cursor: pointer;
+              font-weight: 600;
               transition: all 0.2s ease;
             }
             .terminal-cmd-btn:hover {
-              background: rgba(6, 182, 212, 0.2);
-              border-color: #06b6d4;
+              background: #0284c7;
+              border-color: #0284c7;
               color: #ffffff;
             }
 
             /* Metric Stat Cards */
             .stat-box {
-              background: rgba(11, 16, 33, 0.8);
-              border: 1px solid rgba(6, 182, 212, 0.15);
+              background: #ffffff;
+              border: 1px solid rgba(2, 132, 199, 0.2);
               border-radius: 12px;
               padding: 1.25rem 1.5rem;
               text-align: center;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
             }
             .stat-num {
               font-family: 'Outfit', sans-serif;
               font-size: 2rem;
               font-weight: 800;
-              color: #06b6d4;
+              color: #0284c7;
               line-height: 1.2;
             }
             .stat-label {
               font-size: 0.8rem;
-              color: #94a3b8;
+              color: #64748b;
               font-family: 'JetBrains Mono', monospace;
               text-transform: uppercase;
               margin-top: 0.25rem;
+              font-weight: 600;
             }
           </style>
         `}
       </head>
       <body>
-        <div class="cyber-bg">
+        <div class="cyber-light-bg">
           <div class="grid-overlay"></div>
           
           <Header />
@@ -158,15 +160,14 @@ app.get('/', (c) => {
                 gap: '0.6rem',
                 padding: '0.4rem 1rem',
                 borderRadius: '9999px',
-                backgroundColor: 'rgba(6, 182, 212, 0.12)',
-                border: '1px solid rgba(6, 182, 212, 0.3)',
-                color: '#06b6d4',
+                backgroundColor: 'rgba(2, 132, 199, 0.1)',
+                border: '1px solid rgba(2, 132, 199, 0.25)',
+                color: '#0284c7',
                 fontSize: '0.85rem',
                 fontWeight: '600',
-                marginBottom: '2rem',
-                boxShadow: '0 0 20px rgba(6, 182, 212, 0.15)'
+                marginBottom: '2rem'
               }}>
-                <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#06b6d4', boxShadow: '0 0 10px #06b6d4' }}></span>
+                <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#0284c7', boxShadow: '0 0 10px #0284c7' }}></span>
                 Autonomous Agent Protocol • Version 4.2
               </div>
 
@@ -175,7 +176,7 @@ app.get('/', (c) => {
                 <span class="hero-gradient">Intelligence Engine</span>
               </h1>
 
-              <p style={{ color: '#94a3b8', fontSize: '1.25rem', lineHeight: '1.6', marginBottom: '2.5rem', fontWeight: 400 }}>
+              <p style={{ color: '#475569', fontSize: '1.25rem', lineHeight: '1.6', marginBottom: '2.5rem', fontWeight: 400 }}>
                 High-throughput cognitive agents, neural mesh routing, and isolated edge execution designed for sub-millisecond automated workloads.
               </p>
 
@@ -184,12 +185,12 @@ app.get('/', (c) => {
                 <a href="#terminal" style={{
                   padding: '0.9rem 2rem',
                   borderRadius: '10px',
-                  background: 'linear-gradient(135deg, #06b6d4 0%, #2563eb 100%)',
+                  background: 'linear-gradient(135deg, #0284c7 0%, #2563eb 100%)',
                   color: '#ffffff',
                   textDecoration: 'none',
                   fontWeight: '700',
                   fontSize: '1rem',
-                  boxShadow: '0 0 24px rgba(6, 182, 212, 0.4)',
+                  boxShadow: '0 4px 20px rgba(2, 132, 199, 0.3)',
                   transition: 'all 0.2s ease'
                 }}>
                   Launch Agent Console &rarr;
@@ -197,12 +198,13 @@ app.get('/', (c) => {
                 <a href="mailto:mailto@lee.bot" style={{
                   padding: '0.9rem 2rem',
                   borderRadius: '10px',
-                  backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                  color: '#f8fafc',
+                  backgroundColor: '#ffffff',
+                  color: '#0f172a',
                   textDecoration: 'none',
                   fontWeight: '600',
                   fontSize: '1rem',
-                  border: '1px solid rgba(255, 255, 255, 0.15)',
+                  border: '1px solid #cbd5e1',
+                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
                   transition: 'all 0.2s ease'
                 }}>
                   Contact Owner
@@ -216,11 +218,11 @@ app.get('/', (c) => {
                 gap: '1.25rem'
               }}>
                 <div class="stat-box">
-                  <div class="stat-num" id="stat-agents">14,280+</div>
+                  <div class="stat-num">14,280+</div>
                   <div class="stat-label">Active Mesh Agents</div>
                 </div>
                 <div class="stat-box">
-                  <div class="stat-num" id="stat-latency">3.8ms</div>
+                  <div class="stat-num">3.8ms</div>
                   <div class="stat-label">Avg Execution Latency</div>
                 </div>
                 <div class="stat-box">
@@ -243,44 +245,46 @@ app.get('/', (c) => {
             {/* Code / API Playground Section */}
             <section id="api" style={{ padding: '5rem 0 3rem 0', maxWidth: '960px', margin: '0 auto' }}>
               <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-                <h2 style={{ fontFamily: "'Outfit', sans-serif", fontSize: '2rem', fontWeight: '800', color: '#f8fafc' }}>
+                <h2 style={{ fontFamily: "'Outfit', sans-serif", fontSize: '2rem', fontWeight: '800', color: '#0f172a' }}>
                   Developer Integration & API
                 </h2>
-                <p style={{ color: '#94a3b8', fontSize: '1rem', marginTop: '0.5rem' }}>
+                <p style={{ color: '#64748b', fontSize: '1rem', marginTop: '0.5rem' }}>
                   Interact directly with the lee.bot engine via REST or Cloudflare Workers SDK
                 </p>
               </div>
 
               <div style={{
-                backgroundColor: '#090d18',
+                backgroundColor: '#ffffff',
                 borderRadius: '16px',
-                border: '1px solid rgba(6, 182, 212, 0.2)',
+                border: '1px solid rgba(2, 132, 199, 0.2)',
                 padding: '1.75rem',
                 fontFamily: "'JetBrains Mono', monospace",
-                fontSize: '0.875rem'
+                fontSize: '0.875rem',
+                boxShadow: '0 10px 30px -10px rgba(0,0,0,0.05)',
+                color: '#0f172a'
               }}>
                 <div style={{ color: '#64748b', marginBottom: '1rem' }}>
                   // Initialize Lee-Bot Cloudflare Edge Client
                 </div>
-                <div style={{ color: '#a78bfa' }}>
-                  import <span style={{ color: '#06b6d4' }}>{'{ AgentEngine }'}</span> from <span style={{ color: '#34d399' }}>'@lee.bot/core'</span>;
+                <div>
+                  <span style={{ color: '#7c3aed', fontWeight: 'bold' }}>import</span> <span style={{ color: '#0284c7' }}>{'{ AgentEngine }'}</span> <span style={{ color: '#7c3aed', fontWeight: 'bold' }}>from</span> <span style={{ color: '#16a34a' }}>'@lee.bot/core'</span>;
                 </div>
                 <br />
                 <div>
-                  <span style={{ color: '#f472b6' }}>const</span> bot = <span style={{ color: '#f472b6' }}>new</span> AgentEngine({'{'} domain: <span style={{ color: '#34d399' }}>'lee.bot'</span> {'}'});
+                  <span style={{ color: '#7c3aed', fontWeight: 'bold' }}>const</span> bot = <span style={{ color: '#7c3aed', fontWeight: 'bold' }}>new</span> AgentEngine({'{'} domain: <span style={{ color: '#16a34a' }}>'lee.bot'</span> {'}'});
                 </div>
                 <div>
-                  <span style={{ color: '#f472b6' }}>const</span> response = <span style={{ color: '#f472b6' }}>await</span> bot.execute({'{'}
+                  <span style={{ color: '#7c3aed', fontWeight: 'bold' }}>const</span> response = <span style={{ color: '#7c3aed', fontWeight: 'bold' }}>await</span> bot.execute({'{'}
                 </div>
                 <div style={{ paddingLeft: '1.5rem' }}>
-                  model: <span style={{ color: '#34d399' }}>'Lee-Core-v4'</span>,
+                  model: <span style={{ color: '#16a34a' }}>'Lee-Core-v4'</span>,
                 </div>
                 <div style={{ paddingLeft: '1.5rem' }}>
-                  prompt: <span style={{ color: '#34d399' }}>'Analyze and synthesize multi-agent workflow'</span>
+                  prompt: <span style={{ color: '#16a34a' }}>'Analyze and synthesize multi-agent workflow'</span>
                 </div>
                 <div>{'}'});</div>
                 <br />
-                <div style={{ color: '#10b981' }}>
+                <div style={{ color: '#16a34a', fontWeight: '600' }}>
                   console.log(response.result); // Returns sub-5ms autonomous result
                 </div>
               </div>
